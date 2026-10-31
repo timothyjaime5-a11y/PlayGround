@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1, user-scalable=no">
+<meta name="theme-color" content="#1f3328">
+<title>Ironroot &amp; Ivy — A Farm, Forge &amp; Shop Fable</title>
+<meta name="description" content="Farm strange crops, mine old ore, forge beautiful weapons, and run the valley's coziest shop. A hand-drawn top-down game.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%232e5036'/%3E%3Cpath d='M23 7C14 7 9 11 9 18c0 1.4.3 2.8.9 4.1C13 17 17 13.6 22 12c-3.9 2.4-7.1 5.6-9.1 10 1 .3 2 .4 3 .4C23 22.4 24 14.5 23 7Z' fill='%23d8a541'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<svg class="svg-sprite" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="i-coin" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="#e8b64b" stroke="#9b6a1d" stroke-width="1.6"/><circle cx="12" cy="12" r="6.1" fill="none" stroke="#f7db8a" stroke-width="1.4"/><path d="M12 8.2v7.6M10 10.2h3.2a1.4 1.4 0 0 1 0 2.8H10.8a1.4 1.4 0 0 0 0 2.8H14" fill="none" stroke="#8a5a14" stroke-width="1.3" stroke-linecap="round"/></symbol>
+  <symbol id="i-wood" viewBox="0 0 24 24"><rect x="4.5" y="7.5" width="15" height="5" rx="2.5" transform="rotate(-10 12 10)" fill="#b47b45" stroke="#6f4724" stroke-width="1.2"/><rect x="4.5" y="13" width="15" height="5" rx="2.5" transform="rotate(8 12 15.5)" fill="#9c6538" stroke="#6f4724" stroke-width="1.2"/><ellipse cx="7.2" cy="9.7" rx="2" ry="2.3" transform="rotate(-10 7.2 9.7)" fill="#e0b27d"/><ellipse cx="7.8" cy="15.2" rx="2" ry="2.3" transform="rotate(8 7.8 15.2)" fill="#c99562"/></symbol>
+  <symbol id="i-stone" viewBox="0 0 24 24"><path d="M4 14.6 7.2 8l5-2.8 5.4 2.5 2.4 6-3.2 5.1H7.1Z" fill="#9ba3a0" stroke="#5f6864" stroke-width="1.3" stroke-linejoin="round"/><path d="m7.2 8 4.1 4.4 6.3-1.7M11.3 12.4l-.7 6.4" fill="none" stroke="#6f7874" stroke-width="1.1" stroke-linecap="round"/><path d="m9 9.6 2.3-2.1 3.4 1.2" fill="none" stroke="#c8cfcb" stroke-width="1.2" stroke-linecap="round"/></symbol>
+  <symbol id="i-iron" viewBox="0 0 24 24"><path d="m4 14 3-5h11l2 5-2 3H6Z" fill="#8b99a5" stroke="#4f5a65" stroke-width="1.3" stroke-linejoin="round"/><path d="m7 9 1.7 5H21M4 14h15" fill="none" stroke="#b6c2cc" stroke-width="1.1"/><path d="m6.8 17 1.4-3h9.6l1 3Z" fill="#697784"/></symbol>
+  <symbol id="i-crystal" viewBox="0 0 24 24"><path d="M12 2.5 18.5 9 12 21.5 5.5 9Z" fill="#8f7bd8" stroke="#4d3b91" stroke-width="1.2" stroke-linejoin="round"/><path d="M12 2.5 9.3 9l2.7 12.5L17.7 9Z" fill="#b7a6f1" opacity=".75"/><path d="M5.5 9h13M9.3 9l2.7-6.5L14.7 9" fill="none" stroke="#e3d9ff" stroke-width="1"/></symbol>
+  <symbol id="i-turnip" viewBox="0 0 24 24"><path d="M12 8c3.8 0 6 2.4 5.4 5.5-.5 2.6-2.8 5.4-5.4 7.4-2.6-2-4.9-4.8-5.4-7.4C6 10.4 8.2 8 12 8Z" fill="#e59ab5" stroke="#9d506d" stroke-width="1.2"/><path d="M12 8c0-2.6 1.4-4.6 3.6-5.5M12 8C11.7 5.7 10.6 4 8.7 3" fill="none" stroke="#4d8b4b" stroke-width="1.8" stroke-linecap="round"/><path d="M10.4 11.4c-.6 2 .2 4.4 1.6 6" fill="none" stroke="#f4c8d8" stroke-width="1.1" stroke-linecap="round"/></symbol>
+  <symbol id="i-wheat" viewBox="0 0 24 24"><path d="M12 21V6" stroke="#9a7a32" stroke-width="1.5" stroke-linecap="round"/><path d="M12 8.5C10 8 8.7 6.5 8.5 4c2.3.3 3.6 1.7 3.5 4.5ZM12 12c-2-.5-3.3-2-3.5-4.5 2.3.3 3.6 1.7 3.5 4.5ZM12 15.5c-2-.5-3.3-2-3.5-4.5 2.3.3 3.6 1.7 3.5 4.5ZM12 8.5c2-.5 3.3-2 3.5-4.5C13.2 4.3 11.9 5.7 12 8.5ZM12 12c2-.5 3.3-2 3.5-4.5-2.3.3-3.6 1.7-3.5 4.5ZM12 15.5c2-.5 3.3-2 3.5-4.5-2.3.3-3.6 1.7-3.5 4.5Z" fill="#dfb955" stroke="#9a7a32" stroke-width="1"/></symbol>
+  <symbol id="i-sunbloom" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.1" fill="#e9a03a"/><g fill="#f2c75b" stroke="#a87322" stroke-width=".9"><ellipse cx="12" cy="5.3" rx="2.1" ry="3.1"/><ellipse cx="12" cy="18.7" rx="2.1" ry="3.1"/><ellipse cx="5.3" cy="12" rx="3.1" ry="2.1"/><ellipse cx="18.7" cy="12" rx="3.1" ry="2.1"/><ellipse cx="7.2" cy="7.2" rx="2.1" ry="3" transform="rotate(-45 7.2 7.2)"/><ellipse cx="16.8" cy="16.8" rx="2.1" ry="3" transform="rotate(-45 16.8 16.8)"/><ellipse cx="16.8" cy="7.2" rx="2.1" ry="3" transform="rotate(45 16.8 7.2)"/><ellipse cx="7.2" cy="16.8" rx="2.1" ry="3" transform="rotate(45 7.2 16.8)"/></g></symbol>
+  <symbol id="i-sword" viewBox="0 0 24 24"><path d="M14.8 2.8 21 2l-.8 6.2-9.1 9.1-3.2-3.2Z" fill="#c8d4dc" stroke="#657784" stroke-width="1.2" stroke-linejoin="round"/><path d="m6.7 12.9 4.4 4.4M4.2 15.4l4.4 4.4M3 18.6l2.4 2.4 3-3-2.4-2.4Z" fill="#b47b45" stroke="#6f4724" stroke-width="1.2" stroke-linejoin="round"/></symbol>
+  <symbol id="i-scythe" viewBox="0 0 24 24"><path d="M6 21 17.6 4" stroke="#8b5e33" stroke-width="2" stroke-linecap="round"/><path d="M17.4 4.2C13 2.5 7.6 4 5.2 8.4c4.4-1.9 8.5-.9 12.2 1.4" fill="none" stroke="#b9c6ce" stroke-width="2.2" stroke-linecap="round"/><path d="M5.4 8.2 8 6.2" stroke="#e8f1f4" stroke-width="1.3" stroke-linecap="round"/></symbol>
+  <symbol id="i-axe" viewBox="0 0 24 24"><path d="M8 22 13.7 5" stroke="#8b5e33" stroke-width="2.1" stroke-linecap="round"/><path d="M12.7 3.4c3.6-1.7 7.2.3 8.6 3.5-3.5.6-6.5 2-9.2 4.6-1.1-2.6-.8-5.4.6-8.1Z" fill="#c8d4dc" stroke="#657784" stroke-width="1.2" stroke-linejoin="round"/><path d="M12.2 4.1c3-1.2 5.9.1 7.6 2.3" fill="none" stroke="#f0f6f8" stroke-width="1" stroke-linecap="round"/></symbol>
+  <symbol id="i-hammer" viewBox="0 0 24 24"><path d="M7 21 15.4 8.4" stroke="#8b5e33" stroke-width="2.1" stroke-linecap="round"/><path d="m12.2 2.8 7.3 4.2-2.6 4.6-7.3-4.2Z" fill="#8b99a5" stroke="#4f5a65" stroke-width="1.2" stroke-linejoin="round"/><path d="m13 4.3 4.9 2.8" stroke="#c6d2da" stroke-width="1.1"/></symbol>
+  <symbol id="i-pick" viewBox="0 0 24 24"><path d="M6.5 21 16 7.2" stroke="#8b5e33" stroke-width="2" stroke-linecap="round"/><path d="M4.2 7.5C8 3.5 14.7 2.5 19.8 5.8c-4.6 1.1-8.7 3.7-11.6 7.4-1.6-1.6-2.9-3.5-4-5.7Z" fill="#aab7c0" stroke="#5f6d78" stroke-width="1.2" stroke-linejoin="round"/></symbol>
+  <symbol id="i-hoe" viewBox="0 0 24 24"><path d="M6 21 15.6 6.6" stroke="#8b5e33" stroke-width="2" stroke-linecap="round"/><path d="M13.6 5.4 18.8 2l2.4 3.8-5.2 3.4Z" fill="#aab7c0" stroke="#5f6d78" stroke-width="1.2" stroke-linejoin="round"/></symbol>
+  <symbol id="i-water" viewBox="0 0 24 24"><path d="M12 2.6c3.5 4.5 6.3 8 6.3 11.3A6.3 6.3 0 0 1 12 20.2a6.3 6.3 0 0 1-6.3-6.3C5.7 10.6 8.5 7.1 12 2.6Z" fill="#78b6d4" stroke="#3b728e" stroke-width="1.3"/><path d="M9 13.2c.2 1.7 1.2 2.9 2.7 3.4" fill="none" stroke="#d9f0f8" stroke-width="1.4" stroke-linecap="round"/></symbol>
+  <symbol id="i-shop" viewBox="0 0 24 24"><path d="M3 9.5 5 3h14l2 6.5" fill="#b85c3e" stroke="#7d3a27" stroke-width="1.2" stroke-linejoin="round"/><path d="M4 9.5h16V21H4Z" fill="#f2e4c4" stroke="#7d3a27" stroke-width="1.2"/><path d="M8 21v-6h5v6M4 9.5c1.6 0 2.7-1.3 2.7-2.6 0 1.3 1.1 2.6 2.6 2.6s2.7-1.3 2.7-2.6c0 1.3 1.1 2.6 2.7 2.6S17.3 8.2 17.3 7c0 1.3 1.1 2.6 2.7 2.6" fill="none" stroke="#7d3a27" stroke-width="1.1"/></symbol>
+  <symbol id="i-sound" viewBox="0 0 24 24"><path d="M4 9.5h3.3L12 5.5v13l-4.7-4H4Z" fill="#f2e4c4" stroke="#2f3b31" stroke-width="1.3" stroke-linejoin="round"/><path d="M15 9a4.2 4.2 0 0 1 0 6M17.5 6.5a7.7 7.7 0 0 1 0 11" fill="none" stroke="#f2e4c4" stroke-width="1.5" stroke-linecap="round"/></symbol>
+  <symbol id="i-muted" viewBox="0 0 24 24"><path d="M4 9.5h3.3L12 5.5v13l-4.7-4H4Z" fill="#f2e4c4" stroke="#2f3b31" stroke-width="1.3" stroke-linejoin="round"/><path d="m15.5 9.5 5 5M20.5 9.5l-5 5" fill="none" stroke="#f2e4c4" stroke-width="1.5" stroke-linecap="round"/></symbol>
+  <symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M9.6 9.1a2.5 2.5 0 1 1 3.5 2.3c-.8.4-1.1 1-1.1 1.9" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="12" cy="17" r="1.1" fill="currentColor"/></symbol>
+  <symbol id="i-pause" viewBox="0 0 24 24"><rect x="6.5" y="5" width="4" height="14" rx="1.2" fill="currentColor"/><rect x="13.5" y="5" width="4" height="14" rx="1.2" fill="currentColor"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="m4.5 12.5 5 5 10-11" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M20 4C11 4 4.5 8 4.5 15.5c0 1.5.4 3 1 4.5C9 14 14 10 20 8c-4.5 2.8-8.3 6.4-10.6 11.6 1.1.3 2.2.4 3.4.4C20.5 20 21 11.5 20 4Z" fill="currentColor"/></symbol>
+  <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 2c.7 6 3.4 8.7 9.5 9.5-6.1.8-8.8 3.5-9.5 9.5-.7-6-3.4-8.7-9.5-9.5C8.6 10.7 11.3 8 12 2Z" fill="currentColor"/></symbol>
+</svg>
+
+<div id="app">
+  <canvas id="game" aria-label="Ironroot and Ivy game world"></canvas>
+
+  <!-- ================= HUD ================= -->
+  <div id="hud" class="hud is-hidden">
+    <div class="hud-top">
+      <div class="day-card paper-card">
+        <div class="day-mark"><span>DAY</span><strong id="dayNum">1</strong></div>
+        <div class="day-time">
+          <div class="clock-row"><span id="clock">08:00</span><span id="dayPhase">Morning</span></div>
+          <div class="sun-track"><i id="sunDot"></i><b class="sun-peak"></b></div>
+        </div>
+      </div>
+
+      <div class="goal-card paper-card">
+        <div class="goal-top">
+          <span class="coin"><svg><use href="#i-coin"/></svg><b id="gold">60</b><small>gold</small></span>
+          <span class="goal-copy">Save the shop <b id="goalText">60 / 1,200g</b></span>
+        </div>
+        <div class="goal-track"><span id="goalFill"></span><i></i></div>
+      </div>
+
+      <div class="hud-actions">
+        <button id="soundBtn" class="icon-btn" aria-label="Toggle sound" title="Sound (M)"><svg><use href="#i-sound"/></svg></button>
+        <button id="helpBtn" class="icon-btn" aria-label="How to play" title="How to play"><svg><use href="#i-help"/></svg></button>
+        <button id="pauseBtn" class="icon-btn" aria-label="Pause" title="Pause (Esc)"><svg><use href="#i-pause"/></svg></button>
+      </div>
+    </div>
+
+    <aside class="quest-card paper-card" id="questCard">
+      <div class="quest-head">
+        <svg class="quest-leaf"><use href="#i-leaf"/></svg>
+        <div><span class="eyebrow">The first week</span><h3>Make the shop yours</h3></div>
+      </div>
+      <ul id="questList"></ul>
+      <div class="quest-foot"><span id="questCount">0 / 6</span><span class="quest-dots" id="questDots"></span></div>
+    </aside>
+
+    <div class="hud-bottom">
+      <div class="inventory-panel glass-panel" id="inventory"></div>
+      <div class="interact-prompt is-hidden" id="prompt">
+        <kbd id="promptKey">E</kbd>
+        <span id="promptText">Interact</span>
+      </div>
+      <div class="satchel-panel glass-panel" id="satchel"></div>
+    </div>
+
+    <div class="toasts" id="toasts" aria-live="polite"></div>
+    <div class="sale-banner" id="saleBanner"></div>
+    <div class="corner-hint" id="cornerHint"></div>
+  </div>
+
+  <!-- ================= TOUCH CONTROLS ================= -->
+  <div id="touch" class="touch is-hidden">
+    <div class="stick" id="stick" aria-label="Movement joystick">
+      <div class="stick-base"></div>
+      <div class="stick-knob" id="stickKnob"></div>
+    </div>
+    <button class="touch-action" id="actionBtn" aria-label="Interact">
+      <span id="actionGlyph">Use</span>
+      <small>Interact</small>
+    </button>
+  </div>
+
+  <!-- ================= MODAL ================= -->
+  <div id="modalLayer" class="modal-layer is-hidden" role="dialog" aria-modal="true">
+    <div class="modal-scrim" data-close-modal></div>
+    <section class="modal-panel" id="modalPanel">
+      <button class="modal-close" data-close-modal aria-label="Close"><svg><use href="#i-close"/></svg></button>
+      <div id="modalBody"></div>
+    </section>
+  </div>
+
+  <!-- ================= START ================= -->
+  <div id="startScreen" class="start-screen">
+    <div class="start-wash"></div>
+    <header class="start-brand">
+      <span class="brand-mark"><svg><use href="#i-leaf"/></svg></span>
+      <span>Ironroot &amp; Ivy</span>
+      <em>est. 1894</em>
+    </header>
+
+    <main class="start-main">
+      <div class="start-copy">
+        <p class="eyebrow"><span></span> A cozy farm · forge · shop fable <span></span></p>
+        <h1>IRONROOT <i>&amp;</i> IVY</h1>
+        <p class="tagline">Farm by dawn. Forge by dusk.<br>Sell by lantern light.</p>
+        <p class="blurb">Grow peculiar crops, delve the old quarry, and hammer humble ore into weapons worth bragging about. Your little shop has seven days to earn its place in the valley.</p>
+        <div class="start-actions">
+          <button id="startBtn" class="btn btn-primary btn-xl">Open the shop <span>→</span></button>
+          <button id="startHelpBtn" class="btn btn-ghost">How to play</button>
+        </div>
+        <div class="start-meta">
+          <span><kbd>WASD</kbd> roam</span>
+          <span><kbd>E</kbd> interact</span>
+          <span><kbd>Shift</kbd> hurry</span>
+        </div>
+      </div>
+
+      <aside class="start-card paper-card">
+        <div class="seal"><span>7</span><small>days</small></div>
+        <p class="eyebrow">The harvest festival</p>
+        <h2>Save the old shop</h2>
+        <p>Earn <b>1,200 gold</b> before the festival, or the valley’s oldest forge-shop falls to the bank.</p>
+        <ul class="loop-list">
+          <li><span class="loop-ico farm"><svg><use href="#i-turnip"/></svg></span><div><b>Grow</b><small>Turnips, wheat &amp; sunbloom</small></div></li>
+          <li><span class="loop-ico mine"><svg><use href="#i-pick"/></svg></span><div><b>Delve</b><small>Stone, iron &amp; crystal</small></div></li>
+          <li><span class="loop-ico forge"><svg><use href="#i-hammer"/></svg></span><div><b>Forge</b><small>Six weapons, your prices</small></div></li>
+          <li><span class="loop-ico sell"><svg><use href="#i-shop"/></svg></span><div><b>Sell</b><small>Read the customer, set the tag</small></div></li>
+        </ul>
+      </aside>
+    </main>
+
+    <footer class="start-footer">
+      <span>Made for the valley — and for you.</span>
+      <span class="start-foot-right"><svg><use href="#i-spark"/></svg> A little game about making things and letting go</span>
+    </footer>
+  </div>
+
+  <!-- ================= DAY SUMMARY ================= -->
+  <div id="dayScreen" class="overlay-screen is-hidden">
+    <div class="overlay-scrim"></div>
+    <div class="day-sheet paper-card">
+      <p class="eyebrow" id="dayEyebrow">Day one, closed</p>
+      <h2 id="dayTitle">The lanterns are lit.</h2>
+      <p class="day-sub" id="daySub">A good first day in the valley.</p>
+      <div class="day-stats" id="dayStats"></div>
+      <div class="day-goal">
+        <div class="goal-track big"><span id="dayGoalFill"></span><i></i></div>
+        <div class="day-goal-copy"><span>Shop fund</span><b id="dayGoalText">60 / 1,200g</b></div>
+      </div>
+      <p class="day-tip" id="dayTip"></p>
+      <button id="nextDayBtn" class="btn btn-primary btn-lg">Sleep until morning <span>→</span></button>
+    </div>
+  </div>
+
+  <!-- ================= END ================= -->
+  <div id="endScreen" class="overlay-screen is-hidden">
+    <div class="overlay-scrim"></div>
+    <div class="end-sheet paper-card">
+      <div class="end-seal" id="endSeal"><svg><use href="#i-spark"/></svg></div>
+      <p class="eyebrow" id="endEyebrow">Seven days later</p>
+      <h2 id="endTitle">The shop is saved.</h2>
+      <p class="end-sub" id="endSub"></p>
+      <div class="day-stats" id="endStats"></div>
+      <div class="end-actions">
+        <button id="endMainBtn" class="btn btn-primary btn-lg">Keep trading</button>
+        <button id="endNewBtn" class="btn btn-ghost">New game</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= PAUSE ================= -->
+  <div id="pauseScreen" class="overlay-screen is-hidden">
+    <div class="overlay-scrim"></div>
+    <div class="pause-sheet paper-card">
+      <p class="eyebrow">A breath of valley air</p>
+      <h2>Paused</h2>
+      <p class="pause-sub">The crops will wait. The customers, mostly.</p>
+      <div class="pause-actions">
+        <button id="resumeBtn" class="btn btn-primary btn-lg">Back to the shop</button>
+        <button id="pauseHelpBtn" class="btn btn-ghost">How to play</button>
+        <button id="restartBtn" class="btn btn-ghost danger">Start over</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="module" src="src/game.js"></script>
+</body>
+</html>
